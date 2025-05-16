@@ -1,6 +1,7 @@
 //SFML specific libraries
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Rect.hpp>
 #include <SFML/Window.hpp>
 
 //cpp std libraries
@@ -9,6 +10,13 @@
 
 int main(){
   sf::RenderWindow window(sf::VideoMode(sf::Vector2u({500, 500})), "Main Window");
+  sf::Texture character;
+  if (!character.loadFromFile("../assets/character_beige_front.png" , false , sf::IntRect({10,10}, {100,100}))) {
+    std::cout << "character isn't loaded\n";
+  }
+
+  sf::Sprite sprite(character);
+
   while (window.isOpen()) {
     
     //This is another way to close the window
@@ -40,6 +48,7 @@ int main(){
    }
 
    window.clear();
+   window.draw(sprite);
    window.display();
   }
 
