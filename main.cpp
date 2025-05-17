@@ -14,6 +14,7 @@ int main(){
   if (!character.loadFromFile("../assets/character_beige_front.png")) {
     std::cout << "character isn't loaded\n";
   }
+  character.setSmooth(true);
 
   auto textureSize = character.getSize();
   sf::Sprite sprite(character);
