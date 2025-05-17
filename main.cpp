@@ -19,12 +19,13 @@ int main(){
 
   // Today learn about this , what is scaling and how does it works
   auto textureSize = character.getSize();
-  sf::Sprite sprite(character);
+  sf::Sprite character_sprite(character);
   const float desiredWidth = 50.0f;
   const float desiredHeight = 50.0f;
   float scaleX = desiredWidth / textureSize.x;
   float scaleY = desiredHeight / textureSize.y;
-  sprite.setScale({scaleX, scaleY});
+  character_sprite.setScale({scaleX, scaleY});
+
 
   while (window.isOpen()) {
     
@@ -41,7 +42,7 @@ int main(){
       } else if (const sf::Event::KeyPressed *key_pressed =
 		 event->getIf<sf::Event::KeyPressed>()) {
         if (key_pressed->scancode == sf::Keyboard::Scancode::Escape) {
-	  window.close();
+	  character_sprite.move({10.0f,10.0f});
         }
       } else if (const sf::Event::Resized *resize =
                      event->getIf<sf::Event::Resized>()) {
@@ -57,7 +58,7 @@ int main(){
    }
 
    window.clear();
-   window.draw(sprite);
+   window.draw(character_sprite);
    window.display();
   }
 
