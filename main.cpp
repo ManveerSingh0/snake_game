@@ -11,11 +11,17 @@
 int main(){
   sf::RenderWindow window(sf::VideoMode(sf::Vector2u({500, 500})), "Main Window");
   sf::Texture character;
-  if (!character.loadFromFile("../assets/character_beige_front.png" , false , sf::IntRect({10,10}, {100,100}))) {
+  if (!character.loadFromFile("../assets/character_beige_front.png")) {
     std::cout << "character isn't loaded\n";
   }
 
+  auto textureSize = character.getSize();
   sf::Sprite sprite(character);
+  const float desiredWidth = 50.0f;
+  const float desiredHeight = 50.0f;
+  float scaleX = desiredWidth / textureSize.x;
+  float scaleY = desiredHeight / textureSize.y;
+  sprite.setScale({scaleX, scaleY});
 
   while (window.isOpen()) {
     
