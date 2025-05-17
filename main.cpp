@@ -16,6 +16,8 @@ int main(){
   }
   character.setSmooth(true);
 
+
+  // Today learn about this , what is scaling and how does it works
   auto textureSize = character.getSize();
   sf::Sprite sprite(character);
   const float desiredWidth = 50.0f;
