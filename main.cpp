@@ -25,6 +25,7 @@ int main(){
   float scaleX = desiredWidth / textureSize.x;
   float scaleY = desiredHeight / textureSize.y;
   character_sprite.setScale({scaleX, scaleY});
+  character_sprite.setPosition(sf::Vector2f{0.0f,450.0f});
 
 
   while (window.isOpen()) {
@@ -61,5 +62,4 @@ int main(){
    window.draw(character_sprite);
    window.display();
   }
-
 }
