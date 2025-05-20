@@ -27,6 +27,24 @@ int main(){
   character_sprite.setScale({scaleX, scaleY});
   character_sprite.setPosition(sf::Vector2f{0.0f,450.0f});
 
+  sf::Vertex vertex;
+  vertex.position = sf::Vector2f(10.0f, 50.0f);
+  vertex.color = sf::Color::Red;
+  vertex.texCoords = sf::Vector2f(100.f,100.f);
+  // create an array of 3 vertices that define a triangle primitive
+sf::VertexArray triangle(sf::PrimitiveType::Triangles, 3);
+
+// define the position of the triangle's points
+triangle[0].position = sf::Vector2f(10.f, 10.f);
+triangle[1].position = sf::Vector2f(100.f, 10.f);
+triangle[2].position = sf::Vector2f(100.f, 100.f);
+
+// define the color of the triangle's points
+triangle[0].color = sf::Color::Red;
+triangle[1].color = sf::Color::Blue;
+triangle[2].color = sf::Color::Green;
+
+
 
   while (window.isOpen()) {
     
@@ -60,6 +78,7 @@ int main(){
 
    window.clear();
    window.draw(character_sprite);
+   window.draw(triangle);
    window.display();
   }
 }
