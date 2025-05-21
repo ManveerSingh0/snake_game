@@ -17,7 +17,5 @@ int main(int argc, char *argv[]) {
     window.display();
   }
 
-
-
   return EXIT_SUCCESS;
 }
