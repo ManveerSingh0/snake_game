@@ -1,21 +1,17 @@
-#include <SFML/Graphics.hpp>
-#include "snake.h"
+#include <iostream>
+#include "raylib.h"
 
 
+int main(int argc, char* argv[]) {
+  InitWindow(200, 200, "Snake Game"); 
 
-int main(int argc, char *argv[]) {
-  sf::RenderWindow window(sf::VideoMode(sf::Vector2u{400,400}), "Snake Game");
-
-  while (window.isOpen()) {
-    while (std::optional event = window.pollEvent()) {
-      if (event->is<sf::Event::Closed>()) {
-	window.close();
-      }
-    }
-
-    window.clear();
-    window.display();
+  while (!WindowShouldClose()) {
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawText("Hello world", 50,50,20,LIGHTGRAY);
+    EndDrawing();
   }
 
+  CloseWindow();
   return EXIT_SUCCESS;
 }
