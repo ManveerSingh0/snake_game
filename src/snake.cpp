@@ -9,7 +9,7 @@ Snake::Snake() {
 
 
   move_timer = 0.0f;
-  move_interval = 0.1f;
+  move_interval = 0.2f;
 
 }
 
@@ -34,10 +34,18 @@ void Snake::move(Fruit& fruit, float x , float y) {
 
 
 
+  for (int i = 1; i < segments.size(); i++) {
+    if (CheckCollisionRecs(segments[0], segments[i])) {
+      CloseWindow();
+    }
+  }
+
   if (move_timer >= move_interval) {
     increase_size(fruit, x,y);
     move_timer -= move_interval; 
   } 
+
+  
 
 }
 
