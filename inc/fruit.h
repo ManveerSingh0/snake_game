@@ -7,9 +7,16 @@ class Fruit {
 public:
   Fruit();
   void draw();
+  Rectangle food_rec;
+
+
+  ~Fruit();
 
 private:
   Texture2D apple;
+
+
+
 };
 
 

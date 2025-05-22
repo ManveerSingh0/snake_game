@@ -2,16 +2,32 @@
 #define SNAKE_H
 
 #include <raylib.h>
+#include "fruit.h"
+
+
+#include <deque>
 
 class Snake {
-public:
+public: //functions and constructors
   Snake();
-  void move();
+  void move(const Fruit&);
   void draw();
+  void increase_size(const Fruit&);
+
+private: // functions and constructors
+
+
+
+public: //variable 
+  struct Rectangle snake;
+  std::deque<Rectangle> segments;
 
 private:
-  struct Rectangle snake;
   Vector2 direction;
+  float x_value;
+  float y_value;
+  float move_timer;
+  float move_interval;
 };
 
 

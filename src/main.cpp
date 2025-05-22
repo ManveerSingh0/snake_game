@@ -14,22 +14,25 @@ int main(int argc, char* argv[]) {
 
   while (!WindowShouldClose()) {
     
-    snake.move();
+
 
     BeginDrawing();
     //To show the fps
     DrawFPS(10,10);
-    ClearBackground(SNAKE_GREEN);
 
+    ClearBackground(SNAKE_GREEN);
     //these two function handles the graphic of each texture  
     snake.draw();
     apple.draw();
 
+
     EndDrawing();
+    snake.move(apple);
+
   }
 
   CloseWindow();
 
 
-  return EXIT_SUCCESS;
+  return 0;
 }
