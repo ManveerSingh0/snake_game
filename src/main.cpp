@@ -1,4 +1,3 @@
-#include <iostream>
 #include "raylib.h"
 #include "snake.h"
 #include "fruit.h"
@@ -32,10 +31,8 @@ int main(int argc, char* argv[]) {
     snake.draw();
     apple.draw();
 
-
+    DrawText(TextFormat("Score: %d", snake.score), 300,10,30,WHITE);
     EndDrawing();
-
-
   }
 
   CloseWindow();

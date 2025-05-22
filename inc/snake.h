@@ -20,7 +20,7 @@ private: // functions and constructors
 public: //variable 
   struct Rectangle snake;
   std::deque<Rectangle> segments;
-
+  int score{0};
 private:
   Vector2 direction;
   float x_value;

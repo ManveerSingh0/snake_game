@@ -9,7 +9,7 @@ Snake::Snake() {
 
 
   move_timer = 0.0f;
-  move_interval = 0.2f;
+  move_interval = 0.1f;
 
 }
 
@@ -68,6 +68,10 @@ void Snake::increase_size(Fruit& fruit, float x, float y) {
 
     fruit.food_rec.x = x;
     fruit.food_rec.y = y;
+
+    score += 1;
+
+    DrawText(TextFormat("Score: %d", score), 375,200,30,RED);
   } else {
     x_value = segments[0].x + direction.x * 20;
     y_value = segments[0].y + direction.y * 20;
