@@ -11,6 +11,7 @@ public:
 
 private:
   struct Rectangle snake;
+  Vector2 direction;
 };
 
 
