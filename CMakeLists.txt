@@ -19,4 +19,5 @@ add_subdirectory(src)
 add_subdirectory(inc)
 
 target_compile_features(main PRIVATE cxx_std_17)
-target_link_libraries(main PRIVATE raylib)
+target_link_libraries(snake_lib PUBLIC raylib)
+target_link_libraries(main PRIVATE raylib snake_lib)
