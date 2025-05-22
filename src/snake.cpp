@@ -10,10 +10,11 @@ Snake::Snake() {
 
   move_timer = 0.0f;
   move_interval = 0.1f;
+
 }
 
 
-void Snake::move(const Fruit& fruit) {
+void Snake::move(Fruit& fruit, float x , float y) {
   float delta = GetFrameTime();
   float speed = 100.0f; // 100 pixels/second
   move_timer += delta;
@@ -34,7 +35,7 @@ void Snake::move(const Fruit& fruit) {
 
 
   if (move_timer >= move_interval) {
-    increase_size(fruit);
+    increase_size(fruit, x,y);
     move_timer -= move_interval; 
   } 
 
@@ -48,19 +49,23 @@ void Snake::draw() {
 
 }
 
-void Snake::increase_size(const Fruit& fruit) {
-  if (fruit.food_rec.x == segments[0].x && fruit.food_rec.y == segments[0].y) {
+void Snake::increase_size(Fruit& fruit, float x, float y) {
+  if (CheckCollisionRecs(snake, fruit.food_rec)) {
     x_value = segments[0].x + direction.x * 20;
     y_value = segments[0].y + direction.y * 20;
     struct Rectangle new_head = {x_value, y_value, 20, 20};
     segments.push_front(new_head);
     snake = segments[0];
+
+
+    fruit.food_rec.x = x;
+    fruit.food_rec.y = y;
   } else {
     x_value = segments[0].x + direction.x * 20;
     y_value = segments[0].y + direction.y * 20;
     struct Rectangle new_head = {x_value, y_value, 20, 20};
     segments.push_front(new_head);
     segments.pop_back();
-    snake = segments[0];    
+    snake = segments[0];
   }
 }

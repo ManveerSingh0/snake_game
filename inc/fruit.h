@@ -8,12 +8,12 @@ public:
   Fruit();
   void draw();
   Rectangle food_rec;
-
+  Texture2D apple;
 
   ~Fruit();
 
 private:
-  Texture2D apple;
+
 
 
 

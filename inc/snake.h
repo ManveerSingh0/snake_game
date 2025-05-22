@@ -4,15 +4,14 @@
 #include <raylib.h>
 #include "fruit.h"
 
-
 #include <deque>
 
 class Snake {
 public: //functions and constructors
   Snake();
-  void move(const Fruit&);
+  void move(Fruit&,float,float);
   void draw();
-  void increase_size(const Fruit&);
+  void increase_size(Fruit&, float, float);
 
 private: // functions and constructors
 
