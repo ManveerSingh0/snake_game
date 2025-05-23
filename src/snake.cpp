@@ -11,6 +11,9 @@ Snake::Snake() {
   move_timer = 0.0f;
   move_interval = 0.1f;
 
+  min_move_interval = 0.05f;
+  last_score_threshold = 0;
+
 }
 
 
@@ -18,7 +21,6 @@ void Snake::move(Fruit& fruit, float x , float y) {
   float delta = GetFrameTime();
   float speed = 100.0f; // 100 pixels/second
   move_timer += delta;
-
 
 
 
@@ -70,7 +72,13 @@ void Snake::increase_size(Fruit& fruit, float x, float y) {
     fruit.food_rec.y = y;
 
     score += 1;
-
+    if(score % 10 == 0 && score > last_score_threshold){
+      move_interval -= 0.01f;
+      if(move_interval < min_move_interval){
+        move_interval = min_move_interval;
+      }
+      last_score_threshold = score;
+    }
 
   } else {
     x_value = segments[0].x + direction.x * 20;

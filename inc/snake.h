@@ -27,6 +27,8 @@ private:
   float y_value;
   float move_timer;
   float move_interval;
+  int last_score_threshold;
+  float min_move_interval;
 };
 
 
