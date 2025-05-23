@@ -20,7 +20,9 @@ void Snake::move(Fruit& fruit, float x , float y) {
   move_timer += delta;
 
 
-
+  if(score % 10 == 0 && this->score > 10){
+    this->move_interval -= 0.05f;
+  }
 
   if (IsKeyDown(KEY_D) && direction.x != -1) { // Right, not if moving left
     direction = {1, 0};
