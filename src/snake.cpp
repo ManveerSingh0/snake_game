@@ -11,7 +11,7 @@ Snake::Snake() {
   move_timer = 0.0f;
   move_interval = 0.1f;
 
-  min_move_interval = 0.05f;
+  min_move_interval = 0.001f;
   last_score_threshold = 0;
 
 }
@@ -21,6 +21,7 @@ void Snake::move(Fruit& fruit, float x , float y) {
   float delta = GetFrameTime();
   float speed = 100.0f; // 100 pixels/second
   move_timer += delta;
+
 
 
 
@@ -45,9 +46,10 @@ void Snake::move(Fruit& fruit, float x , float y) {
   if (move_timer >= move_interval) {
     increase_size(fruit, x,y);
     move_timer -= move_interval; 
-  } 
+  }
 
-  
+
+  out_of_bound();
 
 }
 
@@ -63,6 +65,8 @@ void Snake::increase_size(Fruit& fruit, float x, float y) {
   if (CheckCollisionRecs(snake, fruit.food_rec)) {
     x_value = segments[0].x + direction.x * 20;
     y_value = segments[0].y + direction.y * 20;
+
+    
     struct Rectangle new_head = {x_value, y_value, 20, 20};
     segments.push_front(new_head);
     snake = segments[0];
@@ -79,7 +83,6 @@ void Snake::increase_size(Fruit& fruit, float x, float y) {
       }
       last_score_threshold = score;
     }
-
   } else {
     x_value = segments[0].x + direction.x * 20;
     y_value = segments[0].y + direction.y * 20;
@@ -87,5 +90,23 @@ void Snake::increase_size(Fruit& fruit, float x, float y) {
     segments.push_front(new_head);
     segments.pop_back();
     snake = segments[0];
+  }
+}
+
+
+
+void Snake::out_of_bound() {
+  if (snake.x > GetScreenWidth()) {
+    segments[0].x = 0;
+  } else if (snake.x < 0) {
+    segments[0].x = GetScreenWidth();
+  }
+
+
+
+  if (snake.y > GetScreenHeight()) {
+    segments[0].y = 0;
+  } else if (snake.y < 0) {
+    segments[0].y = GetScreenHeight();    
   }
 }

@@ -29,6 +29,7 @@ private:
   float move_interval;
   int last_score_threshold;
   float min_move_interval;
+  void out_of_bound();
 };
 
 
